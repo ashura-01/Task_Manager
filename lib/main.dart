@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'my_app.dart';
+import 'package:task_manager/my_app.dart';
 
 void main(){
   runApp(MyApp());//hehe

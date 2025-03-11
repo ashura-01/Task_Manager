@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:task_manager/UI/Screens/splash_screen.dart';
 
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: SplashScreen(),
     );
   }
 
