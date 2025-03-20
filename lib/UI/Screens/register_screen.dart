@@ -10,6 +10,13 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _emailTEController = TextEditingController();
+  final TextEditingController _fnameTEController = TextEditingController();
+  final TextEditingController _lnameTEController = TextEditingController();
+  final TextEditingController _mobileTEController = TextEditingController();
+  final TextEditingController _passwordTEController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
