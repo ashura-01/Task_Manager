@@ -1,21 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:task_manager/UI/Screens/login_screen.dart';
-import 'package:task_manager/UI/Screens/reset_password_screen.dart';
 import 'package:task_manager/UI/Widgets/screen_background.dart';
 
-class ForgotPasswordPinVarificationScreen extends StatefulWidget {
-  const ForgotPasswordPinVarificationScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordPinVarificationScreen> createState() =>
-      _ForgotPasswordPinVarificationScreenState();
+  State<ResetPasswordScreen> createState() =>
+      _ForgotPasswordVerifyEmailScreenState();
 }
 
-class _ForgotPasswordPinVarificationScreenState
-    extends State<ForgotPasswordPinVarificationScreen> {
-  final TextEditingController _pinInputController = TextEditingController();
+class _ForgotPasswordVerifyEmailScreenState extends State<ResetPasswordScreen> {
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmNewPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class _ForgotPasswordPinVarificationScreenState
               height: 100,
             ),
             Text(
-              "PIN Verification",
+              "Your Email Address",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(
@@ -44,43 +43,28 @@ class _ForgotPasswordPinVarificationScreenState
             SizedBox(
               height: 24,
             ),
-            PinCodeTextField(
-              length: 6,
-              obscureText: false,
-              keyboardType: TextInputType.number,
-              animationType: AnimationType.fade,
-              pinTheme: PinTheme(
-                shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(5),
-                fieldHeight: 50,
-                fieldWidth: 40,
-                activeFillColor: Colors.white,
-                activeColor: Colors.white,
-                selectedFillColor: Colors.white,
-                inactiveFillColor: Colors.white,
-                inactiveColor: Colors.black,
-                selectedColor: Colors.green,
+            TextFormField(
+              controller: _newPasswordController,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(
+                hintText: "Password",
               ),
-              animationDuration: Duration(milliseconds: 300),
-              backgroundColor: Colors.transparent,
-              enableActiveFill: true,
-              controller: _pinInputController,
-              onCompleted: (v) {
-                print("Completed");
-              },
-              appContext: context,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: _confirmNewPasswordController,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(
+                hintText: "Confrim Password",
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             ElevatedButton(
-              onPressed: _onTapSubmitButton,
-              child: Text(
-                "Verify",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              ),
-            ),
+                onPressed: _onTapSubmitButton, child: Text("Confrim")),
             SizedBox(
               height: 48,
             ),
@@ -117,22 +101,21 @@ class _ForgotPasswordPinVarificationScreenState
     );
   }
 
-  void _onTapSubmitButton() {
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => ResetPasswordScreen()),
-        (predicate) => false);
-  }
-
   void _onTapSignInButton() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.pop(context);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    _pinInputController.dispose();
+    _newPasswordController.dispose();
+    _confirmNewPasswordController.dispose();
+
     super.dispose();
   }
+
+  void _onTapSubmitButton() {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+  }
+
+  // end of the code
 }
