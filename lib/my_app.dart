@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
 
       textTheme: TextTheme(
         titleLarge: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        
       )
       
       
