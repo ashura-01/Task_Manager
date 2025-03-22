@@ -10,6 +10,20 @@ class MainBottomNavScreen extends StatefulWidget {
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+      ),
+      bottomNavigationBar: NavigationBar(destinations: [
+        NavigationDestination(icon: Icon(Icons.new_label), label: 'New'),
+        NavigationDestination(icon: Icon(Icons.timelapse), label: 'Progress'),
+        NavigationDestination(icon: Icon(Icons.done), label: 'Completed'),
+        NavigationDestination(icon: Icon(Icons.cancel), label: 'Cancelled'),
+      ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
