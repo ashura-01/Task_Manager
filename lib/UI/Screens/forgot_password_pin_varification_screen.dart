@@ -66,7 +66,7 @@ class _ForgotPasswordPinVarificationScreenState
               enableActiveFill: true,
               controller: _pinInputController,
               onCompleted: (v) {
-                print("Completed");
+                //print("Completed");
               },
               appContext: context,
             ),
@@ -131,7 +131,6 @@ class _ForgotPasswordPinVarificationScreenState
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pinInputController.dispose();
     super.dispose();
   }
