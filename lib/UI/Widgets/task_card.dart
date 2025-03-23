@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
+enum TaskStatus {
+  newtask,
+  progress,
+  completed,
+  cancelled,
+}
+
 class TaskCard extends StatelessWidget {
+  
+  final TaskStatus taskStatus;
   const TaskCard({
     super.key,
+    required this.taskStatus,
   });
 
   @override
@@ -11,9 +21,8 @@ class TaskCard extends StatelessWidget {
       elevation: 1,
       color: Colors.white,
       margin: EdgeInsets.symmetric(horizontal: 10),
-      
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,17 +43,46 @@ class TaskCard extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: _getStatusChipColor(),
                   side: BorderSide.none,
                 ),
                 Spacer(),
-                IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.delete,
+                      size: 20,
+                    )),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.edit,
+                      size: 20,
+                    )),
               ],
             )
           ],
         ),
       ),
     );
+  }
+
+  Color _getStatusChipColor() {
+    Color color;
+    switch (taskStatus) {
+
+      case TaskStatus.newtask:
+        color = Colors.blue;
+
+      case TaskStatus.progress:
+        color = Colors.pink;
+
+      case TaskStatus.completed:
+        color = Colors.green;
+
+      case TaskStatus.cancelled:
+        color = Colors.red;
+    }
+    return color;
   }
 }

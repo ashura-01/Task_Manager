@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/UI/Screens/cancelled_task_screen.dart';
+import 'package:task_manager/UI/Screens/completed_task_screen.dart';
 import 'package:task_manager/UI/Screens/new_task_screen.dart';
 import 'package:task_manager/UI/Screens/progress_task_screen.dart';
 import 'package:task_manager/UI/Widgets/t_m_app_bar.dart';
@@ -15,6 +17,8 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final List<Widget> _screens = [
     NewTaskScreen(),
     ProgressTaskScreen(),
+    CompletedTaskScreen(),
+    CancelledTaskScreen(),
   ];
 
   @override
@@ -39,10 +43,12 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
           ]),
 
       body: _screens[_selectedIndex],
+
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {},
       //   child: Icon(Icons.add),
       // ),
+      
     );
   }
 }
