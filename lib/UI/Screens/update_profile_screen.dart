@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:task_manager/UI/Widgets/screen_background.dart';
 import 'package:task_manager/UI/Widgets/t_m_app_bar.dart';
 
@@ -138,6 +139,16 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  _onTapPhotoPicker() {}
-  _ontapSubmitButton(){}
+  _onTapPhotoPicker() {
+    // Future<void> getLostData() async {
+    //   final ImagePicker picker = ImagePicker();
+    //   final LostDataResponse response = await picker.retrieveLostData();
+    //   if (response.isEmpty) {
+    //     return;
+    //   }
+    //   final List<XFile>? files = response.files;
+    // }
+  }
+
+  _ontapSubmitButton() {}
 }
