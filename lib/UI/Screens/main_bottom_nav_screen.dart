@@ -23,10 +23,9 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: TMAppBar(textTheme: textTheme),
+      appBar: TMAppBar(fromProfileScreen: false,),
       bottomNavigationBar: NavigationBar(
           selectedIndex: _selectedIndex,
           onDestinationSelected: (index) {

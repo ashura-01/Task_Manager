@@ -12,9 +12,8 @@ class AddNewTaskScreen extends StatefulWidget {
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      appBar: TMAppBar(textTheme: textTheme),
+    return Scaffold( 
+      appBar: TMAppBar(fromProfileScreen: false,),
       body: ScreenBackground(
         child: SingleChildScrollView(
           child: Padding(
