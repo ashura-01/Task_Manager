@@ -47,6 +47,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: InputDecoration(
                     hintText: "Email",
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter an email';
+                    }
+                    final RegExp emailRegExp = RegExp(
+                      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                    );
+
+                    if (!emailRegExp.hasMatch(value.trim())) {
+                      return 'Please enter a valid email';
+                    }
+
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: 10,
@@ -57,6 +71,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: InputDecoration(
                     hintText: "First Name",
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter your first name";
+                    }
+
+                    final RegExp nameRegExp =
+                        RegExp(r"^[A-Za-z]+(?:[\s-][A-Za-z]+)*$");
+
+                    if (!nameRegExp.hasMatch(value.trim())) {
+                      return "Enter a valid name (letters only)";
+                    }
+
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: 10,
@@ -67,6 +95,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: InputDecoration(
                     hintText: "Last name",
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter your first name";
+                    }
+
+                    final RegExp nameRegExp =
+                        RegExp(r"^[A-Za-z]+(?:[\s-][A-Za-z]+)*$");
+
+                    if (!nameRegExp.hasMatch(value.trim())) {
+                      return "Enter a valid name (letters only)";
+                    }
+
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: 10,
@@ -78,6 +120,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   decoration: InputDecoration(
                     hintText: "Mobile",
                   ),
+                  validator: (String? value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter your phone number";
+                    }
+
+                    final RegExp bdPhoneRegExp =
+                        RegExp(r'^(?:\+88|88)?01[3-9]\d{8}$');
+
+                    if (!bdPhoneRegExp.hasMatch(value.trim())) {
+                      return "Enter a valid phone number";
+                    }
+
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: 10,
@@ -85,6 +141,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 TextFormField(
                   controller: _passwordTEController,
                   decoration: InputDecoration(hintText: "Password"),
+                  validator: (String? value) {
+                    if (value?.trim().isEmpty ?? true) {
+                      return "Password must contain letter and number";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: 10,
@@ -134,9 +196,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void _onTapSubmitButton(){
-
+  void _onTapSubmitButton() {
+    if (_formkey.currentState!.validate()) {
+      _registerUser();
+    }
   }
+
+  Future<void> _registerUser() async {}
 
   void _onTapSignInButton() {
     Navigator.pop(context);
